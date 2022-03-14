@@ -41,7 +41,7 @@ import time
 from oreganic_spotify.generate import formatter
 
 today = formatter.generate_formated_date()
-os.makedirs(today, exist_ok=True)
+os.makedirs(os.path.join(os.getcwd(), 'jsons', 'Browse', 'GetNewReleases', today), exist_ok=True)
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth())
 
@@ -49,7 +49,7 @@ for country in countries:
     for offset in (0,50):
         new_releases = sp.new_releases(country=country, limit=50, offset=offset)
 
-        with open(os.path.join(os.getcwd(), today, country + '_{:02d}.json'.format(offset)), 'w', encoding='utf-8') as new_releases_file:
+        with open(os.path.join(os.getcwd(), 'jsons', 'Browse', 'GetNewReleases', today, country + '_{:02d}.json'.format(offset)), 'w', encoding='utf-8') as new_releases_file:
             json.dump(new_releases, new_releases_file, indent=4, ensure_ascii=False)
 
         time.sleep(1)

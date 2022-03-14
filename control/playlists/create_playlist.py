@@ -18,7 +18,7 @@ created_playlist = sp.user_playlist_create(
     description=playlist_description,
     public=False)
 
-with open(os.path.join(os.getcwd(), created_playlist['id'] + '.json'), 'w', encoding='utf-8') as created_playlist_file:
+with open(os.path.join(os.getcwd(), 'jsons', 'Playlists', 'CreatePlaylist', created_playlist['id'] + '.json'), 'w', encoding='utf-8') as created_playlist_file:
     json.dump(created_playlist, created_playlist_file, indent=4, ensure_ascii=False)
 
 print('new playlist created! : ', created_playlist['name'])

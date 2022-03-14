@@ -30,7 +30,8 @@ while offset < MAX_OFFSET and offset < offset_limit:
 
     print('get result')
 
-    with open('{}/offset_{:04d}.json'.format(today, offset), 'w', encoding="utf-8") as f:
+    users_saved_tracks_path = os.path.join(os.getcwd(), 'jsons', 'Tracks', 'GetUsersSavedTracks', '{}/offset_{:04d}.json'.format(today, offset))
+    with open(users_saved_tracks_path, 'w', encoding="utf-8") as f:
         json.dump(results, f, indent=4, ensure_ascii=False)
         print('dumps : ', f)
 
