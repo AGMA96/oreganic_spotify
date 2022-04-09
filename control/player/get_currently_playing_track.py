@@ -1,15 +1,10 @@
 import os
 import json
 
-# load .env(SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, OREGANIC_SPOTIFY_BASE_DIR) 
-from dotenv import load_dotenv
-load_dotenv()
-
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+from oreganic_spotify.control.client import HeadlessAuth
 
 def currently_playing():
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope='user-read-currently-playing'))
+    sp = HeadlessAuth(scope="user-read-currently-playing").create_spotipy_client()
     current_playing =sp.currently_playing(market='JP')
     return current_playing
 

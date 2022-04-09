@@ -2,12 +2,7 @@ import os
 import json
 import traceback
 
-# load .env(SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, OREGANIC_SPOTIFY_BASE_DIR) 
-from dotenv import load_dotenv
-load_dotenv()
-
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+from oreganic_spotify.control.client import HeadlessAuth
 
 def load_config():
     config_path = os.path.join(os.environ.get("OREGANIC_SPOTIFY_BASE_DIR"), 'jsons', 'Playlists', 'input', 'config__get_playlist_items.json')
@@ -17,7 +12,7 @@ def load_config():
     return config
 
 def playlist_items(playlist_id, limit):
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope="playlist-read-private"))
+    sp = HeadlessAuth(scope="playlist-read-private").create_spotipy_client()
     playlist_tracks = sp.playlist_items(playlist_id=playlist_id, market='JP', limit=limit)
     return playlist_tracks
 
