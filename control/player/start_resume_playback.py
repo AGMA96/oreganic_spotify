@@ -17,7 +17,7 @@ def load_config():
 if __name__ == '__main__':
     try:
         handlers = [logging.FileHandler('logs/start_resume_playback.log'), logging.StreamHandler()]
-        logging.basicConfig(handlers=handlers, level=logging.DEBUG, format='%(asctime)s %(levelname)s : %(message)s', datefmt='%Y/%m/%d %H:%M:%S')
+        logging.basicConfig(handlers=handlers, level=logging.INFO, format='%(asctime)s %(levelname)s : %(message)s', datefmt='%Y/%m/%d %H:%M:%S')
         config = load_config()
 
         position = config['offset']

@@ -90,7 +90,7 @@ if __name__ == '__main__':
     try:
         config = load_config()
         handlers = [logging.FileHandler('logs/resume_from_recently_played.log'.format(__name__)), logging.StreamHandler()]
-        logging.basicConfig(handlers=handlers, level=logging.DEBUG, format='%(asctime)s %(levelname)s : %(message)s', datefmt='%Y/%m/%d %H:%M:%S')
+        logging.basicConfig(handlers=handlers, level=logging.INFO, format='%(asctime)s %(levelname)s : %(message)s', datefmt='%Y/%m/%d %H:%M:%S')
         recently_played_index = get_recently_played_index(config['playlist_id'])
 
         logging.info("playlist's offset is ", recently_played_index)
