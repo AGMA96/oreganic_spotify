@@ -77,14 +77,18 @@ def get_recently_played_index(playlist_id):
         logging.info('load recently played tracks...')
         recently_played_track_ids = load_recently_played(playlist_id)
         if recently_played_track_ids is None or not recently_played_track_ids:
-            logging.info('nothing played tracks, return index 0')
+            logging.info('return index 0 because nothing played tracks')
             return 0
         search_track_id = recently_played_track_ids[0]
 
     logging.info('get playlist index')
-    recently_played_index = current_playlist_track_ids.index(search_track_id)
+    if search_track_id in current_playlist_track_ids:
+        recently_played_index = current_playlist_track_ids.index(search_track_id)
+        return recently_played_index
+    else:
+        logging.info('return track index 0 because {} is not in the playlist'.format(search_track_id))
 
-    return recently_played_index
+        return 0
 
 if __name__ == '__main__':
     try:
