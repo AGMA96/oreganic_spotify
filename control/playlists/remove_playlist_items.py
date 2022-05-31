@@ -6,7 +6,8 @@ import time
 # load .env(SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, OREGANIC_SPOTIFY_BASE_DIR) 
 from dotenv import load_dotenv
 
-from control.client import HeadlessAuth
+from oreganic_spotify.control.client import HeadlessAuth
+
 load_dotenv()
 
 from oreganic_spotify.generate import formatter

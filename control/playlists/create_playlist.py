@@ -1,7 +1,7 @@
 import os
 import json
 
-from control.client import HeadlessAuth
+from oreganic_spotify.control.client import HeadlessAuth
 
 sp = HeadlessAuth(scope="playlist-modify-private").create_spotipy_client()
 

@@ -3,7 +3,7 @@ import os
 import glob
 import time
 
-from control.client import HeadlessAuth
+from oreganic_spotify.control.client import HeadlessAuth
 
 LIKED_ARTISTS_PATH = os.path.normpath(os.path.join(os.getcwd(), 'jsons', 'Artists', 'input', 'liked_artists_ids.json'))
 

@@ -11,6 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 # load .env(SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, OREGANIC_SPOTIFY_BASE_DIR, LOGIN_ID, LOGIN_PW) 
 from dotenv import load_dotenv
@@ -38,7 +39,7 @@ class HeadlessAuth():
         options.add_argument('--log-level=0')
         chrome_log_path = os.path.join(os.environ.get("OREGANIC_SPOTIFY_BASE_DIR"), 'logs', 'chromedriver.log')
 
-        with webdriver.Chrome(service=Service(log_path=chrome_log_path), options=options) as driver:
+        with webdriver.Chrome(executable_path=ChromeDriverManager().install(), service=Service(log_path=chrome_log_path), options=options) as driver:
             authorize_url = self.spOAuth.get_authorize_url()
             try:
                 driver.get(authorize_url)

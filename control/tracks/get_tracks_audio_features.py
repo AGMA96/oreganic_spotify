@@ -3,7 +3,7 @@ import json
 import glob
 import os
 
-from control.client import HeadlessAuth
+from oreganic_spotify.control.client import HeadlessAuth
 
 def split_list(list):
     length = 100

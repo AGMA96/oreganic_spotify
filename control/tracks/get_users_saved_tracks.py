@@ -3,7 +3,7 @@ import json
 import datetime
 import os
 
-from control.client import HeadlessAuth
+from oreganic_spotify.control.client import HeadlessAuth
 
 def generate_formated_date():
     t_delta = datetime.timedelta(hours=9)

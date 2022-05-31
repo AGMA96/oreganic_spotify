@@ -3,7 +3,7 @@ import os
 import glob
 import time
 
-from control.client import HeadlessAuth
+from oreganic_spotify.control.client import HeadlessAuth
 
 def split_list(list):
     length = 100
@@ -13,8 +13,8 @@ def split_list(list):
 tracks = {}
 
 ## variables #
-tracks_ids_file_name = 'new_releases_tracks_ids'
-#tracks_ids_file_name = 'artists_top_tracks_ids'
+#tracks_ids_file_name = 'new_releases_tracks_ids'
+tracks_ids_file_name = 'artists_top_tracks_ids'
 
 if tracks_ids_file_name == 'new_releases_tracks_ids':
     playlist_id = '00XAPpcIZVmq5Urym5AQIR'

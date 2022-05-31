@@ -3,7 +3,7 @@ import json
 import glob
 import os
 
-from control.client import HeadlessAuth
+from oreganic_spotify.control.client import HeadlessAuth
 
 def filter_acquired_ids(tracks_ids):
     ''' 取得済みのIDを差し引く '''

@@ -3,7 +3,7 @@ import os
 import glob
 import time
 
-from control.client import HeadlessAuth
+from oreganic_spotify.control.client import HeadlessAuth
 
 ALBUMS_IDS_PATH = os.path.join(os.getcwd(), 'jsons', 'Albums', 'input', 'new_release_albums_ids.json')
 

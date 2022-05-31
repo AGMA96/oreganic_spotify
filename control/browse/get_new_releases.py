@@ -37,7 +37,7 @@ import time
 
 from oreganic_spotify.generate import formatter
 
-from control.client import HeadlessAuth
+from oreganic_spotify.control.client import HeadlessAuth
 
 today = formatter.generate_formated_date()
 os.makedirs(os.path.join(os.getcwd(), 'jsons', 'Browse', 'GetNewReleases', today), exist_ok=True)
