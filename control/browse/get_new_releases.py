@@ -31,19 +31,18 @@ countries = ("AD",    "AE",    "AG",    "AL",    "AM",    "AO",    "AR",    "AT"
     "ZA",    "ZM",    "ZW",
 )
 
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-
 import json
 import os
 import time
 
 from oreganic_spotify.generate import formatter
 
+from control.client import HeadlessAuth
+
 today = formatter.generate_formated_date()
 os.makedirs(os.path.join(os.getcwd(), 'jsons', 'Browse', 'GetNewReleases', today), exist_ok=True)
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth())
+sp = HeadlessAuth().create_spotipy_client()
 
 for country in countries:
     for offset in (0,50):

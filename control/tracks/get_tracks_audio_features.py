@@ -1,10 +1,9 @@
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-
 import time
 import json
 import glob
 import os
+
+from control.client import HeadlessAuth
 
 def split_list(list):
     length = 100
@@ -39,7 +38,8 @@ def main():
 
     target_ids = filter_acquired_ids(tracks_ids=tracks_ids)
 
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth())
+    sp = HeadlessAuth(scope="user-read-currently-playing").create_spotipy_client()
+
     for id_list in split_list(target_ids):
         tracks = sp.audio_features(tracks=id_list)
 

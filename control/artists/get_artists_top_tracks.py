@@ -1,10 +1,9 @@
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-
 import json
 import os
 import glob
 import time
+
+from control.client import HeadlessAuth
 
 RELATED_ARTISTS_PATH = os.path.normpath(os.path.join(os.getcwd(),'jsons', 'Artists', 'input', 'related_artists_ids.json'))
 
@@ -21,7 +20,7 @@ print('acquired artists : ', str(len(acquired_artists_ids)))
 # 取得済みのアーティストIDを差し引く
 target_artists = {id: name for id, name in related_artists.items() if id not in acquired_artists_ids}
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(show_dialog=True))
+sp = HeadlessAuth().create_spotipy_client()
 
 for artist_id in target_artists.keys():
     top_tracks = sp.artist_top_tracks(artist_id=artist_id, country="JP")

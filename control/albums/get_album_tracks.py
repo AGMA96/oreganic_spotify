@@ -1,10 +1,9 @@
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-
 import json
 import os
 import glob
 import time
+
+from control.client import HeadlessAuth
 
 ALBUMS_IDS_PATH = os.path.join(os.getcwd(), 'jsons', 'Albums', 'input', 'new_release_albums_ids.json')
 
@@ -21,7 +20,7 @@ print('acquired albums : ', str(len(acquired_album_tracks)))
 
 target_albums = {id: name for id, name in albums.items() if id not in acquired_album_tracks}
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth())
+sp = HeadlessAuth().create_spotipy_client()
 
 for album_id in target_albums.keys():
     try:

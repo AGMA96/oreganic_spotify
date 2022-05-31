@@ -1,10 +1,9 @@
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-
 import time
 import json
 import glob
 import os
+
+from control.client import HeadlessAuth
 
 def filter_acquired_ids(tracks_ids):
     ''' 取得済みのIDを差し引く '''
@@ -34,7 +33,7 @@ def main():
 
     target_ids = filter_acquired_ids(tracks_ids=tracks_ids)
 
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth())
+    sp = HeadlessAuth(scope="user-read-currently-playing").create_spotipy_client()
     for id in target_ids:
         analysis = sp.audio_analysis(track_id=id)
 

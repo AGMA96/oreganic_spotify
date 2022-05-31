@@ -1,10 +1,9 @@
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-
 import json
 import os
 import glob
 import time
+
+from control.client import HeadlessAuth
 
 def split_list(list):
     length = 100
@@ -72,8 +71,7 @@ print('already added tracks : ', str(len(added_tracks_before)))
 # 追加済みのトラックIDを差し引く
 target_tracks = {id: name for id, name in tracks.items() if id not in added_tracks_before}
 
-scope="playlist-modify-private"
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
+sp = HeadlessAuth(scope="playlist-modify-private").create_spotipy_client()
 
 added_tracks = {}
 added_tracks['items'] = []

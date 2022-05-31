@@ -1,10 +1,9 @@
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-
 import json
 import os
 import glob
 import time
+
+from control.client import HeadlessAuth
 
 LIKED_ARTISTS_PATH = os.path.normpath(os.path.join(os.getcwd(), 'jsons', 'Artists', 'input', 'liked_artists_ids.json'))
 
@@ -32,7 +31,7 @@ print('related artists : ', str(len(related_artists)))
 
 target_artists = {k: v for k, v in liked_artists.items() if k not in acquired_artists}
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth())
+sp = HeadlessAuth().create_spotipy_client()
 
 for artist_id in target_artists.keys():
     related_artists = sp.artist_related_artists(artist_id)

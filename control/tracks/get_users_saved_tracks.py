@@ -1,9 +1,9 @@
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
 import time
 import json
 import datetime
 import os
+
+from control.client import HeadlessAuth
 
 def generate_formated_date():
     t_delta = datetime.timedelta(hours=9)
@@ -12,8 +12,7 @@ def generate_formated_date():
     d = now.strftime('%Y-%m-%d')
     return d
 
-scope = "user-library-read"
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
+sp = HeadlessAuth(scope="user-library-read").create_spotipy_client()
 
 limit = 50
 MAX_OFFSET = 20000

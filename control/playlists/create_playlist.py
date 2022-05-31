@@ -1,11 +1,9 @@
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-
 import os
 import json
 
-scope = "playlist-modify-private"
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
+from control.client import HeadlessAuth
+
+sp = HeadlessAuth(scope="playlist-modify-private").create_spotipy_client()
 
 # variables
 playlist_name = 'new releases'
