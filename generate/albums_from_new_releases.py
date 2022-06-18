@@ -3,9 +3,9 @@ import json
 import glob
 
 
-input_directory = os.path.join(os.getcwd(),'..','..','jsons', 'Browse', 'GetNewReleases', '2022-03-10')
+input_directory = os.path.join(os.getcwd(), 'jsons', 'Browse', 'GetNewReleases', '2022-03-10')
 
-ALBUMS_IDS_PATH = r'xxx\jsons\Albums\input\new_release_albums_ids.json'
+ALBUMS_IDS_PATH = os.path.join(os.getcwd(), 'jsons', 'Albums', 'input', 'new_release_albums_ids.json')
 
 albums = {}
 with open(ALBUMS_IDS_PATH, 'r', encoding='utf-8') as albums_ids_file:
